@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Submit Your Demo | Metallic Records</title>
+
+    <meta name="description"
+          content="Submit your music demo to Metallic Records for consideration.">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="images/Red.png">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="container header-inner">
+
+            <a href="index.html" class="top-logo">
+                <img src="images/Red.png" alt="Metallic Records">
+            </a>
+
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="index.html#home">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#services">Services</a>
+                <a href="index.html#store">Store</a>
+                <a href="index.html#artists">Artists</a>
+                <a href="index.html#music">Music</a>
+                <a href="index.html#gallery">Gallery</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- DEMO SUBMISSION -->
+    <main class="demo-page">
+
+        <section class="demo-hero">
+
+            <div class="demo-container">
+
+                <span class="demo-label">METALLIC RECORDS</span>
+
+                <h1>Submit Your Demo</h1>
+
+                <p class="demo-intro">
+                    Think your music belongs with Metallic Records?
+                    Submit your demo for consideration.
+                </p>
+
+                <p class="demo-note">
+                    We welcome original House, Deep House, Afro House,
+                    Organic House and related sounds.
+                </p>
+
+
+                <!-- SUBMISSION FORM -->
+                <form class="demo-form"
+      action="https://formsubmit.co/metallicrecord9@gmail.com"
+      method="POST"
+      enctype="multipart/form-data">
+
+    <input type="hidden" name="_subject"
+           value="New Music Demo Submission — Metallic Records">
+
+    <input type="hidden" name="_template"
+           value="table">
+
+    <input type="hidden" name="_captcha"
+           value="true">
+
+    <input type="hidden" name="_next"
+           value="https://metallicrecords.github.io/metallic-records-website/demo-submission.html">
+
+    <input type="hidden" name="_honey"
+           style="display:none">
+
+    <!-- YOUR EXISTING FORM FIELDS CONTINUE BELOW -->
+
+                    <div class="form-group">
+                        <label for="artist-name">
+                            Artist Name *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="artist-name"
+                            name="artist_name"
+                            placeholder="Your artist name"
+                            required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="real-name">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="real-name"
+                            name="real_name"
+                            placeholder="Your full name">
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="email">
+                                Email Address *
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="you@example.com"
+                                required>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="phone">
+                                Phone / WhatsApp
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                placeholder="+27">
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="track-title">
+                            Track Title *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="track-title"
+                            name="track_title"
+                            placeholder="Name of your track"
+                            required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="genre">
+                            Genre *
+                        </label>
+
+                        <select id="genre"
+                                name="genre"
+                                required>
+
+                            <option value="">
+                                Select genre
+                            </option>
+
+                            <option value="deep-house">
+                                Deep House
+                            </option>
+
+                            <option value="deep-soulful-house">
+                                Deep Soulful House
+                            </option>
+
+                            <option value="afro-house">
+                                Afro House
+                            </option>
+
+                            <option value="organic-house">
+                                Organic House
+                            </option>
+
+                            <option value="house">
+                                House
+                            </option>
+
+                            <option value="other">
+                                Other
+                            </option>
+
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="bio">
+                            Artist Bio
+                        </label>
+
+                        <textarea
+                            id="bio"
+                            name="bio"
+                            rows="5"
+                            placeholder="Tell us briefly about yourself and your music."></textarea>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="music-link">
+                            Private Streaming / Download Link *
+                        </label>
+
+                        <input
+                            type="url"
+                            id="music-link"
+                            name="music_link"
+                            placeholder="https://..."
+                            required>
+
+                        <small>
+                            SoundCloud, Dropbox, Google Drive or another
+                            private listening/download link.
+                        </small>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="demo-file">
+                            Demo File
+                        </label>
+
+                        <input
+                            type="file"
+                            id="demo-file"
+                            name="demo_file"
+                            accept=".mp3,.wav,audio/mpeg,audio/wav">
+
+                        <small>
+                            MP3 or WAV. File upload will be connected to
+                            the submission system in the next step.
+                        </small>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="social-links">
+                            Artist / Social Links
+                        </label>
+
+                        <textarea
+                            id="social-links"
+                            name="social_links"
+                            rows="4"
+                            placeholder="Spotify, Apple Music, Instagram, Facebook, website, etc."></textarea>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="message">
+                            Message
+                        </label>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="5"
+                            placeholder="Anything else you would like Metallic Records to know?"></textarea>
+                    </div>
+
+
+                    <!-- RIGHTS CONFIRMATION -->
+                    <div class="demo-checkbox">
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                name="rights_confirmation"
+                                required>
+
+                            I confirm that I have the necessary rights
+                            and permissions to submit this music to
+                            Metallic Records.
+                        </label>
+
+                    </div>
+
+
+                    <div class="demo-checkbox">
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                name="submission_terms"
+                                required>
+
+                            I understand that submitting a demo does not
+                            guarantee a release, contract, signing or
+                            other agreement with Metallic Records.
+                        </label>
+
+                    </div>
+
+
+                    <button type="submit"
+                            class="demo-submit-button">
+                        Submit Demo
+                        <span>↗</span>
+                    </button>
+
+                </>
+
+
+                <div class="demo-footer-note">
+
+                    <h2>What happens next?</h2>
+
+                    <p>
+                        Your submission will be reviewed for consideration.
+                        If Metallic Records is interested in taking the
+                        conversation further, we will contact you using the
+                        information provided.
+                    </p>
+
+                    <p>
+                        Please submit only music that you have permission
+                        to share.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <p>
+                &copy; 2026 Metallic Records. All rights reserved.
+            </p>
+
+            <div class="footer-legal">
+
+                <a href="terms.html">
+                    Terms &amp; Conditions
+                </a>
+
+                <a href="privacy-policy.html">
+                    Privacy Policy
+                </a>
+
+                <a href="refund-policy.html">
+                    Refund Policy
+                </a>
+
+                <a href="cookie-policy.html">
+                    Cookie Policy
+                </a>
+
+                <a href="shipping-policy.html">
+                    Shipping Policy
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
