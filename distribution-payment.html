@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Distribution Plans | Metallic Records</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: auto;
+            padding: 30px 20px 50px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .brand {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .brand span {
+            color: #e00000;
+        }
+
+        .header p {
+            color: #999;
+            margin-top: 8px;
+            font-size: 14px;
+        }
+
+        .payment-box {
+            background: #0b0b0b;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .payment-box h1 {
+            text-align: center;
+            color: #e00000;
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .intro {
+            text-align: center;
+            color: #aaa;
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .plans {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .plan {
+            background: #050505;
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 25px 18px;
+            text-align: center;
+        }
+
+        .plan:hover {
+            border-color: #e00000;
+        }
+
+        .plan h2 {
+            color: #ddd;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            color: #fff;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .price span {
+            color: #888;
+            font-size: 13px;
+            font-weight: normal;
+        }
+
+        .plan p {
+            color: #999;
+            font-size: 13px;
+            line-height: 1.6;
+            margin: 15px 0 20px;
+        }
+
+        .plan-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #e00000;
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .plan-button:hover {
+            background: #b00000;
+        }
+
+        .free-button {
+            background: #333;
+        }
+
+        .free-button:hover {
+            background: #444;
+        }
+
+        .notice {
+            margin-top: 30px;
+            padding: 16px;
+            background: #080808;
+            border: 1px solid #292929;
+            color: #888;
+            font-size: 12px;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            color: #aaa;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 700px) {
+            .plans {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-box {
+                padding: 22px 18px;
+            }
+
+            .brand {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <div class="brand">
+            METALLIC <span>RECORDS</span>
+        </div>
+
+        <p>Music Distribution</p>
+
+    </div>
+
+    <div class="payment-box">
+
+        <h1>Distribution Plans</h1>
+
+        <p class="intro">
+            Choose the distribution account that applies to you.
+            Metallic Records artists are not charged a distribution fee.
+            External artists and labels require an annual distribution plan.
+        </p>
+
+        <div class="plans">
+
+            <div class="plan">
+
+                <h2>Metallic Records Artist</h2>
+
+                <div class="price">
+                    R0 <span>/ year</span>
+                </div>
+
+                <p>
+                    Distribution for artists officially associated
+                    with Metallic Records.
+                </p>
+
+                <button
+                    class="plan-button free-button"
+                    type="button"
+                    onclick="selectPlan('Metallic Records Artist')"
+                >
+                    Continue
+                </button>
+
+            </div>
+
+            <div class="plan">
+
+                <h2>External Artist</h2>
+
+                <div class="price">
+                    R350 <span>/ year</span>
+                </div>
+
+                <p>
+                    Annual distribution access for one
+                    independent external artist.
+                </p>
+
+                <button
+                    class="plan-button"
+                    type="button"
+                    onclick="selectPlan('External Artist - R350/year')"
+                >
+                    Continue to Payment
+                </button>
+
+            </div>
+
+            <div class="plan">
+
+                <h2>External Label</h2>
+
+                <div class="price">
+                    R799 <span>/ year</span>
+                </div>
+
+                <p>
+                    Annual distribution access for
+                    external labels.
+                </p>
+
+                <button
+                    class="plan-button"
+                    type="button"
+                    onclick="selectPlan('External Label - R799/year')"
+                >
+                    Continue to Payment
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="notice">
+            External artist and label distribution requires successful
+            payment before distribution can proceed. Payment gateway
+            processing will be connected separately.
+        </div>
+
+    </div>
+
+    <a
+        href="artist-dashboard.html"
+        class="back-link"
+    >
+        ← Back to Artist Dashboard
+    </a>
+
+</div>
+
+<script>
+    function selectPlan(plan) {
+
+        if (plan === "Metallic Records Artist") {
+
+            alert(
+                "Metallic Records artists pay R0 for distribution."
+            );
+
+            return;
+        }
+
+        alert(
+            "Selected plan: " + plan +
+            "\n\nPayment gateway connection will be added next."
+        );
+    }
+</script>
+
+</body>
+</html>
