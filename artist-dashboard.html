@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Artist Dashboard | Metallic Records</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --black: #050505;
+            --dark: #0c0c0c;
+            --red: #e00000;
+            --bright-red: #ff1717;
+            --silver: #bfc3c7;
+            --white: #ffffff;
+            --border: rgba(255, 0, 0, 0.35);
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* HEADER */
+        header {
+            background: #000;
+            border-bottom: 1px solid var(--border);
+            padding: 18px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            font-size: 21px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .brand span {
+            color: var(--red);
+        }
+
+        .back-link {
+            border: 1px solid var(--red);
+            padding: 9px 17px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            background: var(--red);
+        }
+
+        /* HERO */
+        .hero {
+            padding: 60px 6% 45px;
+            background:
+                radial-gradient(circle at center, #280000 0%, #050505 65%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-inner {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .hero small {
+            color: var(--red);
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 7vw, 62px);
+            line-height: 1;
+            margin: 14px 0;
+        }
+
+        .hero h1 span {
+            color: var(--red);
+        }
+
+        .hero p {
+            color: var(--silver);
+            max-width: 700px;
+        }
+
+        /* DASHBOARD */
+        .dashboard {
+            max-width: 1100px;
+            margin: auto;
+            padding: 45px 6%;
+        }
+
+        /* PROFILE */
+        .profile {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 25px;
+            background: linear-gradient(145deg, #141414, #090909);
+            border: 1px solid #292929;
+            border-left: 4px solid var(--red);
+            margin-bottom: 25px;
+        }
+
+        .profile-info h2 {
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+
+        .profile-info p {
+            color: var(--silver);
+            font-size: 13px;
+        }
+
+        .artist-status {
+            color: #fff;
+            border: 1px solid #333;
+            padding: 8px 13px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* QUICK ACTIONS */
+        .section-title {
+            margin-bottom: 18px;
+        }
+
+        .section-title small {
+            color: var(--red);
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .section-title h2 {
+            font-size: 27px;
+            margin-top: 5px;
+        }
+
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 40px;
+        }
+
+        .action-card {
+            background: #0c0c0c;
+            border: 1px solid #292929;
+            padding: 25px;
+            transition: 0.3s;
+        }
+
+        .action-card:hover {
+            border-color: var(--red);
+            transform: translateY(-3px);
+        }
+
+        .action-card .number {
+            color: var(--red);
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .action-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .action-card p {
+            color: var(--silver);
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        .action-button {
+            display: inline-block;
+            border: 1px solid var(--red);
+            padding: 9px 14px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .action-button:hover {
+            background: var(--red);
+        }
+
+        /* RELEASES */
+        .release-section {
+            margin-top: 20px;
+        }
+
+        .release-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .release-card {
+            display: grid;
+            grid-template-columns: 80px 1fr auto;
+            align-items: center;
+            gap: 18px;
+            background: #0c0c0c;
+            border: 1px solid #292929;
+            padding: 15px;
+        }
+
+        .cover {
+            width: 80px;
+            height: 80px;
+            background:
+                linear-gradient(135deg, #250000, #090909);
+            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--red);
+            font-size: 11px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .release-info h3 {
+            font-size: 17px;
+            margin-bottom: 4px;
+        }
+
+        .release-info p {
+            color: var(--silver);
+            font-size: 12px;
+        }
+
+        /* STATUS */
+        .status {
+            padding: 7px 12px;
+            font-size: 10px;
+            font-weight: bold;
+            border: 1px solid;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .status-review {
+            color: #ffb000;
+            border-color: #8a6000;
+        }
+
+        .status-approved {
+            color: #42d879;
+            border-color: #237a46;
+        }
+
+        .status-draft {
+            color: var(--silver);
+            border-color: #555;
+        }
+
+        /* EMPTY */
+        .empty {
+            text-align: center;
+            padding: 40px 20px;
+            border: 1px dashed #333;
+            color: #777;
+        }
+
+        .empty strong {
+            display: block;
+            color: white;
+            margin-bottom: 6px;
+        }
+
+        /* NOTICE */
+        .notice {
+            margin-top: 35px;
+            padding: 18px 20px;
+            background: #100000;
+            border-left: 4px solid var(--red);
+            color: var(--silver);
+            font-size: 12px;
+        }
+
+        .notice strong {
+            color: white;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: #000;
+            border-top: 1px solid #222;
+        }
+
+        footer p {
+            color: #777;
+            font-size: 12px;
+        }
+
+        footer span {
+            color: var(--red);
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+
+            header {
+                padding: 15px 5%;
+            }
+
+            .brand {
+                font-size: 17px;
+            }
+
+            .back-link {
+                padding: 8px 12px;
+                font-size: 11px;
+            }
+
+            .hero {
+                padding: 50px 5% 40px;
+            }
+
+            .dashboard {
+                padding: 35px 5%;
+            }
+
+            .action-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .release-card {
+                grid-template-columns: 65px 1fr;
+            }
+
+            .cover {
+                width: 65px;
+                height: 65px;
+            }
+
+            .status {
+                grid-column: 2;
+                justify-self: start;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .release-card {
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+
+        <div class="brand">
+            METALLIC <span>RECORDS</span>
+        </div>
+
+        <a href="music-distribution.html" class="back-link">
+            BACK TO DISTRIBUTION
+        </a>
+
+    </header>
+
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <div class="hero-inner">
+
+            <small>METALLIC RECORDS DISTRIBUTION</small>
+
+            <h1>
+                ARTIST <span>DASHBOARD</span>
+            </h1>
+
+            <p>
+                Manage your releases, submit new music and follow the progress
+                of your Metallic Records distribution submissions.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- DASHBOARD -->
+    <main class="dashboard">
+
+
+        <!-- PROFILE -->
+        <div class="profile">
+
+            <div class="profile-info">
+
+                <h2>Artist Account</h2>
+
+                <p>
+                    Your Metallic Records distribution workspace
+                </p>
+
+            </div>
+
+            <div class="artist-status">
+                Account Active
+            </div>
+
+        </div>
+
+
+        <!-- QUICK ACTIONS -->
+        <div class="section-title">
+
+            <small>QUICK ACTIONS</small>
+
+            <h2>Manage Your Music</h2>
+
+        </div>
+
+
+        <div class="action-grid">
+
+
+            <div class="action-card">
+
+                <div class="number">01</div>
+
+                <h3>New Release</h3>
+
+                <p>
+                    Submit a new single, EP or album for review.
+                </p>
+
+                <a
+                    href="new-release.html"
+                    class="action-button"
+                >
+                    START RELEASE
+                </a>
+
+            </div>
+
+
+            <div class="action-card">
+
+                <div class="number">02</div>
+
+                <h3>My Releases</h3>
+
+                <p>
+                    View releases submitted through your account.
+                </p>
+
+                <a
+                    href="#my-releases"
+                    class="action-button"
+                >
+                    VIEW RELEASES
+                </a>
+
+            </div>
+
+
+            <div class="action-card">
+
+                <div class="number">03</div>
+
+                <h3>Artist Profile</h3>
+
+                <p>
+                    Manage your artist information and release details.
+                </p>
+
+                <a
+                    href="#artist-profile"
+                    class="action-button"
+                >
+                    VIEW PROFILE
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- RELEASES -->
+        <section
+            class="release-section"
+            id="my-releases"
+        >
+
+            <div class="section-title">
+
+                <small>RELEASE MANAGEMENT</small>
+
+                <h2>My Releases</h2>
+
+            </div>
+
+
+            <div class="release-list">
+
+
+                <!-- SAMPLE RELEASE -->
+                <div class="release-card">
+
+                    <div class="cover">
+                        COVER ART
+                    </div>
+
+                    <div class="release-info">
+
+                        <h3>No releases yet</h3>
+
+                        <p>
+                            Your submitted releases will appear here once
+                            the distribution system is connected.
+                        </p>
+
+                    </div>
+
+                    <div class="status status-draft">
+                        No Release
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- PROFILE SECTION -->
+        <section
+            class="release-section"
+            id="artist-profile"
+            style="margin-top:45px;"
+        >
+
+            <div class="section-title">
+
+                <small>ARTIST INFORMATION</small>
+
+                <h2>Artist Profile</h2>
+
+            </div>
+
+
+            <div class="release-card">
+
+                <div class="cover">
+                    ARTIST
+                </div>
+
+                <div class="release-info">
+
+                    <h3>Artist Account</h3>
+
+                    <p>
+                        Your artist profile information will be displayed
+                        here once account registration and the database
+                        system are connected.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- NOTICE -->
+        <div class="notice">
+
+            <strong>Current stage:</strong>
+            This dashboard is the front-end interface. The next development
+            stage will connect artist accounts, submitted releases, uploaded
+            files and release statuses to a secure database.
+
+        </div>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            © 2026 <span>Metallic Records</span>. All rights reserved.
+        </p>
+
+    </footer>
+
+</body>
+</html>
