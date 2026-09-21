@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Artist Account | Metallic Records</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+            margin: auto;
+            padding: 30px 20px 50px;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo h1 {
+            font-size: 30px;
+            color: #fff;
+            letter-spacing: 2px;
+        }
+
+        .logo h1 span {
+            color: #e00000;
+        }
+
+        .logo p {
+            color: #aaa;
+            margin-top: 8px;
+            font-size: 14px;
+        }
+
+        .register-box {
+            background: #0b0b0b;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.12);
+        }
+
+        .register-box h2 {
+            color: #e00000;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 26px;
+        }
+
+        .intro {
+            text-align: center;
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            color: #ddd;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 13px;
+            background: #050505;
+            border: 1px solid #444;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #e00000;
+        }
+
+        select option {
+            background: #111;
+            color: #fff;
+        }
+
+        .account-info {
+            border: 1px solid #333;
+            border-left: 3px solid #e00000;
+            padding: 15px;
+            margin: 22px 0;
+            background: #080808;
+        }
+
+        .account-info h3 {
+            color: #e00000;
+            font-size: 16px;
+            margin-bottom: 7px;
+        }
+
+        .account-info p {
+            color: #aaa;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .checkbox input {
+            width: auto;
+            margin-top: 3px;
+            accent-color: #e00000;
+        }
+
+        .checkbox label {
+            margin: 0;
+            color: #aaa;
+            font-weight: normal;
+            line-height: 1.5;
+        }
+
+        .register-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            background: #e00000;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .register-btn:hover {
+            background: #b00000;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 22px;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .login-link a {
+            color: #e00000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            color: #aaa;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            color: #fff;
+        }
+
+        .notice {
+            margin-top: 25px;
+            padding: 15px;
+            border: 1px solid #292929;
+            color: #888;
+            font-size: 12px;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px 15px 40px;
+            }
+
+            .register-box {
+                padding: 22px 18px;
+            }
+
+            .logo h1 {
+                font-size: 25px;
+            }
+        }
+    </style>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">
+        <h1>METALLIC <span>RECORDS</span></h1>
+        <p>Artist Distribution Portal</p>
+    </div>
+
+    <div class="register-box">
+
+        <h2>Create Artist Account</h2>
+
+        <p class="intro">
+            Create your artist account to manage releases, submit music
+            and access the Metallic Records distribution system.
+        </p>
+
+        <form id="registerForm">
+
+            <div class="form-group">
+                <label for="stageName">Artist / Stage Name</label>
+                <input
+                    type="text"
+                    id="stageName"
+                    name="stageName"
+                    placeholder="Enter your artist name"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="legalName">Legal Name</label>
+                <input
+                    type="text"
+                    id="legalName"
+                    name="legalName"
+                    placeholder="Enter your legal name"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email address"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="+27 ..."
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="artistType">Artist Account Type</label>
+
+                <select id="artistType" name="artistType" required>
+                    <option value="">Select account type</option>
+                    <option value="metallic-records">
+                        Metallic Records Artist
+                    </option>
+                    <option value="external">
+                        Independent / External Artist
+                    </option>
+                </select>
+            </div>
+
+            <div class="account-info">
+                <h3>Distribution Account</h3>
+
+                <p>
+                    Metallic Records artists and external artists will be
+                    handled according to their account type. Account
+                    information will be verified when the full distribution
+                    system is connected.
+                </p>
+            </div>
+
+            <form id="register-form">
+                <label for="password">Password</label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Create a password"
+                    required
+                >
+            </>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    placeholder="Confirm your password"
+                    required
+                >
+            </div>
+
+            <div class="checkbox">
+
+                <input
+                    type="checkbox"
+                    id="terms"
+                    required
+                >
+
+                <label for="terms">
+                    I confirm that the information provided is accurate and
+                    that I have the necessary rights to submit music through
+                    the distribution system.
+                </label>
+
+            </div>
+
+            <button type="submit" class="register-btn">
+                Create Artist Account
+            </button>
+
+        </form>
+
+        <div class="login-link">
+            Already have an account?
+            <a href="artist-login.html">Artist Login</a>
+        </div>
+
+    </div>
+
+    <div class="notice">
+        Artist accounts, secure authentication, database storage and release
+        management will be connected when the backend system is implemented.
+    </div>
+
+    <a href="music-distribution.html" class="back-link">
+        ← Back to Music Distribution
+    </a>
+
+</div>
+
+<script>
+  alert("REGISTRATION SCRIPT IS RUNNING");
+    const SUPABASE_URL = "https://LAUQZLOQYREMSWNEVXVP.supabase.co";
+const SUPABASE_KEY = "sb_publishable_7QIk5g7y807WELwWIhpbbw_ZQi9yNka";
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const registerForm = document.getElementById("register-form");
+
+    registerForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirm-password").value;
+
+        if (password !== confirmPassword) {
+            alert("Passwords do not match.");
+            return;
+        }
+
+        const { data, error } = await supabaseClient.auth.signUp({
+            email: email,
+            password: password
+        });
+
+        if (error) {
+            alert(error.message);
+            return;
+        }
+
+        alert("Account created successfully. Please check your email to confirm your account.");
+        registerForm.reset();
+    });
+
+});
+</script>
+
+</body>
+</html>
