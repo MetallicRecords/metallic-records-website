@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Account Type | Metallic Records</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #050505;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .account-page {
+            min-height: 100vh;
+            padding: 50px 20px 70px;
+            background:
+                radial-gradient(circle at top, rgba(190, 0, 0, 0.18), transparent 38%),
+                linear-gradient(180deg, #080808 0%, #000000 100%);
+        }
+
+        .account-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #d40000;
+        }
+
+        .back-link {
+            color: #ffffff;
+            text-decoration: none;
+            border: 1px solid #555;
+            padding: 11px 20px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: bold;
+            transition: 0.3s ease;
+        }
+
+        .back-link:hover {
+            border-color: #d40000;
+            color: #d40000;
+        }
+
+        .heading {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 55px;
+        }
+
+        .heading .small-title {
+            color: #d40000;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .heading h1 {
+            font-size: clamp(38px, 6vw, 65px);
+            line-height: 1;
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+
+        .heading h1 span {
+            color: #d40000;
+        }
+
+        .heading p {
+            color: #aaa;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .account-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .account-card {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(145deg, #161616, #080808);
+            border: 1px solid #303030;
+            border-radius: 8px;
+            padding: 35px 30px;
+            min-height: 510px;
+            display: flex;
+            flex-direction: column;
+            transition: 0.35s ease;
+        }
+
+        .account-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #d40000;
+        }
+
+        .account-card:hover {
+            transform: translateY(-8px);
+            border-color: #d40000;
+            box-shadow: 0 20px 50px rgba(212, 0, 0, 0.18);
+        }
+
+        .account-number {
+            color: #666;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .account-card h2 {
+            font-size: 25px;
+            text-transform: uppercase;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .price {
+            font-size: 38px;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .price span {
+            color: #888;
+            font-size: 12px;
+            letter-spacing: 1px;
+            font-weight: normal;
+        }
+
+        .free {
+            color: #d40000;
+        }
+
+        .account-description {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .features li {
+            color: #ddd;
+            font-size: 14px;
+            padding: 10px 0;
+            border-bottom: 1px solid #222;
+        }
+
+        .features li::before {
+            content: "✓";
+            color: #d40000;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .account-btn {
+            margin-top: auto;
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid #d40000;
+            background: #d40000;
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: 0.3s ease;
+        }
+
+        .account-btn:hover {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+        }
+
+        .approval {
+            border-color: #555;
+        }
+
+        .approval .account-btn {
+            background: transparent;
+            border-color: #d40000;
+        }
+
+        .approval .account-btn:hover {
+            background: #d40000;
+            color: #ffffff;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 50px;
+            color: #666;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 900px) {
+            .account-grid {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+                margin: auto;
+            }
+
+            .account-card {
+                min-height: auto;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .account-page {
+                padding: 30px 15px 50px;
+            }
+
+            .top-bar {
+                margin-bottom: 45px;
+            }
+
+            .logo {
+                font-size: 17px;
+            }
+
+            .back-link {
+                padding: 9px 13px;
+                font-size: 11px;
+            }
+
+            .heading {
+                margin-bottom: 40px;
+            }
+
+            .heading h1 {
+                letter-spacing: -1px;
+            }
+
+            .account-card {
+                padding: 30px 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="account-page">
+
+    <div class="account-container">
+
+        <div class="top-bar">
+            <div class="logo">
+                METALLIC <span>RECORDS</span>
+            </div>
+
+            <a href="./music-distribution.html" class="back-link">
+    BACK TO DISTRIBUTION
+            </a>
+        </div>
+
+        <div class="heading">
+
+            <div class="small-title">
+                Distribution Access
+            </div>
+
+            <h1>
+                Choose Your <span>Account</span>
+            </h1>
+
+            <p>
+                Select the account type that applies to you before continuing
+                with Metallic Records music distribution.
+            </p>
+
+        </div>
+
+        <div class="account-grid">
+
+            <!-- METALLIC RECORDS ARTIST -->
+
+            <div class="account-card approval">
+
+                <div class="account-number">
+                    01 / ARTIST
+                </div>
+
+                <h2>
+                    Metallic Records Artist
+                </h2>
+
+                <div class="price free">
+                    FREE
+                </div>
+
+                <p class="account-description">
+                    For artists officially approved and signed with
+                    Metallic Records.
+                </p>
+
+                <ul class="features">
+                    <li>Free distribution</li>
+                    <li>Artist account</li>
+                    <li>Release management</li>
+                    <li>Royalty management</li>
+                </ul>
+
+                <button class="account-btn" type="button">
+                    Apply for Artist Access
+                </button>
+
+            </div>
+
+
+            <!-- INDEPENDENT ARTIST -->
+
+            <div class="account-card">
+
+                <div class="account-number">
+                    02 / ARTIST
+                </div>
+
+                <h2>
+                    Independent Artist
+                </h2>
+
+                <div class="price">
+                    R350 <span>/ YEAR</span>
+                </div>
+
+                <p class="account-description">
+                    For independent artists who want to distribute
+                    their music through Metallic Records.
+                  <br><br>
+First subscription: 30% off<br>
+Second subscription: 15% off<br>
+Third subscription onward: Full price
+                </p>
+
+                <ul class="features">
+                    <li>Annual distribution access</li>
+                    <li>Artist account</li>
+                    <li>Release management</li>
+                    <li>Royalty management</li>
+                </ul>
+
+                <button
+    class="account-button"
+    type="button"
+    style="background:#e00000;color:#fff;border:1px solid #e00000;"
+    onclick="window.location.href='subscription.html';"
+>
+    Continue — R350
+                </button>
+
+            </div>
+
+
+            <!-- RECORD LABEL -->
+
+            <div class="account-card">
+
+                <div class="account-number">
+                    03 / LABEL
+                </div>
+
+                <h2>
+                    Record Label
+                </h2>
+
+                <div class="price">
+                    R799 <span>/ YEAR</span>
+                </div>
+
+                <p class="account-description">
+                    For independent record labels managing and
+                    distributing multiple releases.
+                  <br><br>
+First subscription: 30% off<br>
+Second subscription: 15% off<br>
+Third subscription onward: Full price
+                </p>
+
+                <ul class="features">
+                    <li>Annual label access</li>
+                    <li>Label account</li>
+                    <li>Release management</li>
+                    <li>Royalty management</li>
+                </ul>
+
+                <button
+    class="account-button"
+    type="button"
+    style="background:#e00000;color:#fff;border:1px solid #e00000;"
+    onclick="window.location.href='subscription.html';"
+>
+    Continue — R799
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="footer-note">
+            Metallic Records reserves the right to verify account information
+            and approve access before distribution services are activated.
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
