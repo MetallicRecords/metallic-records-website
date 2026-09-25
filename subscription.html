@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Metallic Records — Subscription</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #000;
+            color: #fff;
+        }
+
+        .subscription-page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .page-header h1 {
+            margin: 0 0 10px;
+            font-size: 32px;
+        }
+
+        .page-header h1 span {
+            color: #e00000;
+        }
+
+        .page-header p {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        .subscription-card {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .subscription-card h2 {
+            margin-top: 0;
+        }
+
+        .price {
+            font-size: 32px;
+            font-weight: bold;
+            color: #fff;
+            margin: 15px 0;
+        }
+
+        .price span {
+            font-size: 15px;
+            color: #aaa;
+            font-weight: normal;
+        }
+
+        .discount-message {
+            color: #e00000;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .pay-button {
+            width: 100%;
+            border: 0;
+            padding: 15px;
+            border-radius: 8px;
+            background: #e00000;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .pay-button:hover {
+            opacity: 0.9;
+        }
+
+        .notice {
+            margin-top: 25px;
+            padding: 15px;
+            border-left: 3px solid #e00000;
+            background: #151515;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: #e00000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="subscription-page">
+
+        <header class="page-header">
+            <h1>Metallic <span>Records</span></h1>
+            <p>
+                Distribution Subscription
+            </p>
+        </header>
+
+
+        <!-- EXTERNAL ARTIST -->
+
+        <section class="subscription-card">
+
+            <h2>External Artist</h2>
+
+            <p>
+                Annual subscription for independent artists distributing music
+                through Metallic Records.
+            </p>
+
+            <div class="price">
+                R350.00
+                <span>/ year</span>
+            </div>
+
+            <div
+                class="discount-message"
+                id="artistDiscountMessage"
+            >
+                30% off — Pay R245.00
+            </div>
+
+            <button
+                type="button"
+                class="pay-button"
+                id="artistPayButton"
+            >
+                Continue to Payment
+            </button>
+
+        </section>
+
+
+        <!-- EXTERNAL RECORD LABEL -->
+
+        <section class="subscription-card">
+
+            <h2>External Record Label</h2>
+
+            <p>
+                Annual subscription for external record labels distributing
+                music through Metallic Records.
+            </p>
+
+            <div class="price">
+                R799.00
+                <span>/ year</span>
+            </div>
+
+            <div
+                class="discount-message"
+                id="labelDiscountMessage"
+            >
+                30% off — Pay R559.30
+            </div>
+
+            <button
+                type="button"
+                class="pay-button"
+                id="labelPayButton"
+            >
+                Continue to Payment
+            </button>
+
+        </section>
+
+
+        <div class="notice">
+
+            <strong>Subscription discounts</strong><br><br>
+
+            First successful subscription payment:
+            <strong>30% off</strong><br>
+
+            Second successful subscription payment:
+            <strong>15% off</strong><br>
+
+            Third successful subscription payment and thereafter:
+            <strong>Full price</strong>
+
+        </div>
+
+
+        <a
+            href="music-distribution.html"
+            class="back-link"
+        >
+            ← Back to Music Distribution
+        </a>
+
+    </main>
+
+
+    <script src="subscription.js"></script>
+
+</body>
+</html>
